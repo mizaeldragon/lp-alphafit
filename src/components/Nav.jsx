@@ -69,7 +69,7 @@ export default function Nav() {
             ))}
           </nav>
           <a className="btn btn-primary mobile-menu-cta" href="#aula-experimental" onClick={scrollTo('#aula-experimental')}>
-            Agendar aula experimental
+            Agendar aula
             <span className="arrow">→</span>
           </a>
         </div>

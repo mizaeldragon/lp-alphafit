@@ -39,8 +39,7 @@ export default function About() {
           <div className="about-content">
             <div className="about-top">
               <h2 className="about-title">
-                Aqui a meta<br />
-                <span className="serif gold">vira resultado.</span>
+                Aqui a meta <span className="serif gold">vira resultado.</span>
               </h2>
               <p className="about-desc">
                 A <strong>Alpha Fit</strong> existe para transformar vidas no Maranhão. Com ambientes

@@ -832,10 +832,8 @@ svg {
 
 .sec-head.center {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
   grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .sec-head.center .sec-title {
@@ -978,10 +976,9 @@ svg {
 }
 
 .about-top {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0 48px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .about-title {
@@ -989,6 +986,7 @@ svg {
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
+  white-space: nowrap;
 }
 
 .about-desc {
@@ -996,7 +994,8 @@ svg {
   color: var(--ink-dim);
   line-height: 1.65;
   max-width: none;
-  padding-top: clamp(34px, 3.78vw, 59px);
+  padding-top: 11px;
+  padding-bottom: 15px;
 }
 
 .about-desc strong {
@@ -2957,6 +2956,7 @@ footer ul a:hover {
   .about-card-wrap { aspect-ratio: 16/7; }
   .about-top { grid-template-columns: 1fr; gap: 20px; }
   .about-desc { padding-top: 0; }
+  .about-title { white-space: normal; font-size: 10vw; }
   .about-badge { bottom: 16px; left: auto; right: 20px; padding: 12px 16px; gap: 10px; }
   .about-badge-icon { width: 36px; height: 36px; border-radius: 10px; }
   .about-badge-icon svg { width: 18px; height: 18px; }
@@ -2965,6 +2965,21 @@ footer ul a:hover {
 }
 
 @media (max-width: 720px) {
+  .sec-head.center {
+    margin-left: calc(var(--gutter) * -1);
+    margin-right: calc(var(--gutter) * -1);
+  }
+  #sobre {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  #sobre > .wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .about-content {
+    padding-right: 0;
+  }
   body { cursor: auto; }
   .cursor, .cursor-ring { display: none; }
   .btn { cursor: pointer; }
