@@ -37,15 +37,18 @@ export default function About() {
           </div>
 
           <div className="about-content">
-            <h2 className="about-title">
-              Aqui a meta <span className="serif gold">vira resultado.</span>
-            </h2>
-            <p className="about-desc">
-              A <strong>Alpha Fit</strong> existe para transformar vidas no Maranhão. Com ambientes
-              de alto padrão, equipamentos Cinemax de ponta, personal sem taxa e um app com
-              inteligência artificial — entregamos tudo que você precisa para evoluir, sem
-              desculpa.
-            </p>
+            <div className="about-top">
+              <h2 className="about-title">
+                Aqui a meta<br />
+                <span className="serif gold">vira resultado.</span>
+              </h2>
+              <p className="about-desc">
+                A <strong>Alpha Fit</strong> existe para transformar vidas no Maranhão. Com ambientes
+                de alto padrão, equipamentos Cinemax de ponta, personal sem taxa e um app com
+                inteligência artificial — entregamos tudo que você precisa para evoluir, sem
+                desculpa.
+              </p>
+            </div>
 
             <div className="about-stats">
               {stats.map((s) => (

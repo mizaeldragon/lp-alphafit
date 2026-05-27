@@ -74,7 +74,7 @@ export default function Manifesto() {
       </div>
       <GradDef />
       <div className="wrap">
-        <div className="sec-head reveal">
+        <div className="sec-head center reveal">
           <h2 className="sec-title">
             O que você vai <span className="serif gold">encontrar</span> na Alpha Fit.
           </h2>

@@ -103,7 +103,7 @@ export default function Testimonials() {
         <span className="num">07</span>
       </div>
       <div className="wrap">
-        <div className="sec-head reveal">
+        <div className="sec-head center reveal">
           <h2 className="sec-title">
             Resultado <span className="serif gold">real</span> de gente real.
           </h2>

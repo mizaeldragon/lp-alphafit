@@ -22,7 +22,7 @@ export default function Bento() {
         <span className="num">02</span>
       </div>
       <div className="wrap">
-        <div className="sec-head reveal">
+        <div className="sec-head center reveal">
           <h2 className="sec-title">
             A <span className="serif gold">diferença</span> está nos detalhes — não no marketing.
           </h2>

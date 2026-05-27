@@ -57,7 +57,7 @@ export default function Units() {
         <span className="num">04</span>
       </div>
       <div className="wrap">
-        <div className="sec-head reveal">
+        <div className="sec-head center reveal">
           <h2 className="sec-title">
             Cinco endereços. <span className="serif gold">Uma alpha.</span>
           </h2>
