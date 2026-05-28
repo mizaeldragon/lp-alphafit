@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 function Check() {
   return (
     <svg viewBox="0 0 20 20" fill="none">
@@ -11,8 +13,8 @@ const plans = [
   {
     id: 'Evolution',
     label: 'Single · 1 unidade',
-    price: '90',
-    cents: ',00',
+    annual:  { price: '90',  cents: ',00' },
+    monthly: { price: '109', cents: ',90' },
     desc: 'Pra começar do jeito certo. Unidade fixa, equipamentos top, app com tracking.',
     features: [
       'Seg a Sex das 05:00 às 23:00',
@@ -26,8 +28,8 @@ const plans = [
   {
     id: 'MultiFit',
     label: 'Full Access · 5 unidades',
-    price: '129',
-    cents: ',99',
+    annual:  { price: '129', cents: ',99' },
+    monthly: { price: '139', cents: ',90' },
     desc: 'Acesso ilimitado a todas as 5 unidades, IA no app e personal sem taxa.',
     features: [
       'Acesso total às unidades',
@@ -40,9 +42,30 @@ const plans = [
     featured: true,
     badge: 'MAIS ESCOLHIDO',
   },
+  {
+    id: 'Alpha VIP',
+    label: 'VIP · Sem limites',
+    annual:  { price: '159', cents: ',90' },
+    monthly: { price: '159', cents: ',90' },
+    desc: 'A experiência máxima Alpha Fit. Personal exclusivo, nutricionista e acesso total.',
+    features: [
+      'Acesso total às unidades',
+      'Ambiente 100% climatizado',
+      'Equipamentos Cimerian',
+      'Treinos personalizados',
+      'Personal exclusivo',
+      'Acompanhamento nutricional',
+      'Zero Taxa de Cancelamento',
+    ],
+    cta: 'Quero o Alpha VIP',
+    featured: false,
+    badge: 'PREMIUM',
+  },
 ]
 
 export default function Plans() {
+  const [isAnnual, setIsAnnual] = useState(true)
+
   return (
     <section className="sec" id="planos">
       <div className="sec-tag">
@@ -59,45 +82,65 @@ export default function Plans() {
           </p>
         </div>
 
+        <div className="plans-toggle reveal">
+          <button
+            className={`plans-toggle-btn${!isAnnual ? ' active' : ''}`}
+            onClick={() => setIsAnnual(false)}
+          >
+            Mensal
+          </button>
+          <button
+            className={`plans-toggle-btn${isAnnual ? ' active' : ''}`}
+            onClick={() => setIsAnnual(true)}
+          >
+            Anual <span className="plans-toggle-save">Economize</span>
+          </button>
+        </div>
+
         <div className="plans-grid">
-          {plans.map((p) => (
-            <article key={p.id} className={`pcard reveal${p.featured ? ' pcard-featured' : ''}`}>
-              {p.badge && <span className="pcard-badge">{p.badge}</span>}
+          {plans.map((p) => {
+            const price = isAnnual ? p.annual : p.monthly
+            return (
+              <article key={p.id} className={`pcard reveal${p.featured ? ' pcard-featured' : ''}`}>
+                {p.badge && <span className="pcard-badge">{p.badge}</span>}
 
-              <div className="pcard-top">
-                <div className="pcard-label">{p.label}</div>
-                <h3 className="pcard-name">{p.id}</h3>
+                <div className="pcard-top">
+                  <div className="pcard-label">{p.label}</div>
+                  <h3 className="pcard-name">{p.id}</h3>
 
-                <div className="pcard-price">
-                  <span className="pcard-cur">R$</span>
-                  <span className="pcard-val">{p.price}</span>
-                  <div className="pcard-right">
-                    <span className="pcard-cents">{p.cents}</span>
-                    <span className="pcard-per">/mês</span>
+                  <div className="pcard-price">
+                    <span className="pcard-cur">R$</span>
+                    <span className="pcard-val">{price.price}</span>
+                    <div className="pcard-right">
+                      <span className="pcard-cents">{price.cents}</span>
+                      <span className="pcard-per">/mês</span>
+                    </div>
                   </div>
+                  <p className="pcard-desc">{p.desc}</p>
                 </div>
-                <p className="pcard-desc">{p.desc}</p>
-              </div>
 
-              <div className="pcard-divider" />
+                <div className="pcard-divider" />
 
-              <ul className="pcard-features">
-                {p.features.map((f) => (
-                  <li key={f}>
-                    <Check />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="pcard-features">
+                  {p.features.map((f) => (
+                    <li key={f}>
+                      <Check />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="pcard-footer">
-                <button className={`pcard-cta${p.featured ? ' pcard-cta-gold' : ''}`}>
-                  {p.cta} →
-                </button>
-                <span className="pcard-note">Pagamento mensal · cancele quando quiser</span>
-              </div>
-            </article>
-          ))}
+                <div className="pcard-footer">
+                  <button className={`pcard-cta${p.featured ? ' pcard-cta-gold' : ''}`}>
+                    {p.cta} →
+                  </button>
+                  <span className="pcard-note">
+                    {isAnnual ? 'Cobrado anualmente · cancele quando quiser' : 'Pagamento mensal · cancele quando quiser'}
+                  </span>
+                </div>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>
